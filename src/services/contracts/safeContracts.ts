@@ -65,6 +65,8 @@ export const getReadOnlyGnosisSafeContract = async (chain: ChainInfo, safeVersio
   return ethAdapter.getSafeContract({
     singletonDeployment: getSafeContractDeployment(chain, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
+    // customContractAddress: '0x411253f0d2a6828280c563baF193AC8E98e6632b',
+    customContractAddress: '0x82173E95172818d438Cdb0fFf63F1bD9c2fE7944',
   })
 }
 
@@ -112,6 +114,7 @@ export const getReadOnlyProxyFactoryContract = (chainId: string, safeVersion: Sa
   return ethAdapter.getSafeProxyFactoryContract({
     singletonDeployment: getProxyFactoryContractDeployment(chainId, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
+    customContractAddress: '0x7e3afc810732305252D0833F7820e385412851f2',
   })
 }
 
@@ -126,6 +129,7 @@ export const getReadOnlyFallbackHandlerContract = async (
   return ethAdapter.getCompatibilityFallbackHandlerContract({
     singletonDeployment: getFallbackHandlerContractDeployment(chainId, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
+    customContractAddress: '0x45b48BaE8e077d50840bb4064DD6F9aA1443b107',
   })
 }
 

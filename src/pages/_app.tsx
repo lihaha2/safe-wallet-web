@@ -1,4 +1,4 @@
-import { SentryErrorBoundary } from '@/services/sentry' // needs to be imported first
+// import { SentryErrorBoundary } from '@/services/sentry' // needs to be imported first
 import type { ReactNode } from 'react'
 import { type ReactElement } from 'react'
 import { type AppProps } from 'next/app'
@@ -30,7 +30,7 @@ import { useTxTracking } from '@/hooks/useTxTracking'
 import { useSafeMsgTracking } from '@/hooks/messages/useSafeMsgTracking'
 import useGtm from '@/services/analytics/useGtm'
 import useBeamer from '@/hooks/Beamer/useBeamer'
-import ErrorBoundary from '@/components/common/ErrorBoundary'
+// import ErrorBoundary from '@/components/common/ErrorBoundary'
 import createEmotionCache from '@/utils/createEmotionCache'
 import MetaTags from '@/components/common/MetaTags'
 import useAdjustUrl from '@/hooks/useAdjustUrl'
@@ -82,11 +82,11 @@ export const AppProviders = ({ children }: { children: ReactNode | ReactNode[] }
     <SafeThemeProvider mode={themeMode}>
       {(safeTheme: Theme) => (
         <ThemeProvider theme={safeTheme}>
-          <SentryErrorBoundary showDialog fallback={ErrorBoundary}>
-            <WalletProvider>
-              <TxModalProvider>{children}</TxModalProvider>
-            </WalletProvider>
-          </SentryErrorBoundary>
+          {/* <SentryErrorBoundary showDialog fallback={ErrorBoundary}> */}
+          <WalletProvider>
+            <TxModalProvider>{children}</TxModalProvider>
+          </WalletProvider>
+          {/* </SentryErrorBoundary> */}
         </ThemeProvider>
       )}
     </SafeThemeProvider>

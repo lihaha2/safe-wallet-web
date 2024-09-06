@@ -64,7 +64,23 @@ const getSafeFactory = async (
     throw new Error('Invalid Safe version')
   }
   const ethAdapter = await createEthersAdapter(ethersProvider)
-  const safeFactory = await SafeFactory.create({ ethAdapter, safeVersion })
+  const safeFactory = await SafeFactory.create({
+    ethAdapter,
+    safeVersion,
+    contractNetworks: {
+      33033: {
+        safeSingletonAddress: '0x411253f0d2a6828280c563baF193AC8E98e6632b',
+        safeProxyFactoryAddress: '0x7e3afc810732305252D0833F7820e385412851f2',
+        multiSendAddress: '0x7587A12AA2B157F03Db07E9332ca250Ce68499aB',
+        multiSendCallOnlyAddress: '0x6ADe5071f20824469FDcfD62bC90dA009A04dFf4',
+        fallbackHandlerAddress: '0x45b48BaE8e077d50840bb4064DD6F9aA1443b107',
+        signMessageLibAddress: '0x452De19fa660c461B1a81c0260C6897016e4f545',
+        createCallAddress: '0xb05c6D731D24Af5A5958690C0c8C9b4e2E79025D',
+        simulateTxAccessorAddress: '0x0B9e607f9333469f5d1506AF466A4A5BF2f4b70a',
+      },
+    },
+  })
+
   return safeFactory
 }
 
@@ -97,6 +113,16 @@ export const computeNewSafeAddress = async (
     safeDeploymentConfig: {
       saltNonce: props.saltNonce,
       safeVersion: LATEST_SAFE_VERSION as SafeVersion,
+    },
+    customContracts: {
+      safeSingletonAddress: '0x411253f0d2a6828280c563baF193AC8E98e6632b',
+      safeProxyFactoryAddress: '0x7e3afc810732305252D0833F7820e385412851f2',
+      multiSendAddress: '0x7587A12AA2B157F03Db07E9332ca250Ce68499aB',
+      multiSendCallOnlyAddress: '0x6ADe5071f20824469FDcfD62bC90dA009A04dFf4',
+      fallbackHandlerAddress: '0x45b48BaE8e077d50840bb4064DD6F9aA1443b107',
+      signMessageLibAddress: '0x452De19fa660c461B1a81c0260C6897016e4f545',
+      createCallAddress: '0xb05c6D731D24Af5A5958690C0c8C9b4e2E79025D',
+      simulateTxAccessorAddress: '0x0B9e607f9333469f5d1506AF466A4A5BF2f4b70a',
     },
   })
 }
